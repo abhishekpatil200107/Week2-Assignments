@@ -353,7 +353,7 @@
                 "exec": [
                   "pm.test(\"Status 401\", () => pm.response.to.have.status(401));",
                   "pm.test(\"generic message\", () => pm.expect(pm.response.json().error).to.eql(\"Invalid email/username or password.\"));",
-                  "pm.test(\"no cookie set\", () => pm.expect(pm.cookies.has(\"token\")).to.be.false);"
+                  "pm.test(\"no session cookie issued\", () => pm.expect(pm.response.headers.get(\"Set-Cookie\") || \"\").to.not.include(\"token=\"));"
                 ]
               }
             }
@@ -471,7 +471,7 @@
                   "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
                   "const j = pm.response.json();",
                   "pm.test(\"returns user + expiry\", () => { pm.expect(j.user.username).to.eql(pm.collectionVariables.get(\"username\")); pm.expect(j.expiresAt).to.be.a(\"string\"); });",
-                  "pm.test(\"HttpOnly session cookie is set\", () => { const c = pm.cookies.get(\"token\"); pm.expect(c).to.be.a(\"string\"); });",
+                  "pm.test(\"session cookie is set with HttpOnly and SameSite=Strict\", () => { const c = pm.response.headers.get(\"Set-Cookie\") || \"\"; pm.expect(c).to.include(\"token=\"); pm.expect(c).to.match(/HttpOnly/i); pm.expect(c).to.match(/SameSite=Strict/i); });",
                   "pm.collectionVariables.set(\"token\", j.token);"
                 ]
               }
