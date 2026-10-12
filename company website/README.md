@@ -28,8 +28,7 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
 ## Deploy (live demo)
-**GitHub Pages:** push to GitHub, then Settings -> Pages -> Deploy from branch `main` / root.
-**Netlify / Vercel:** drag and drop the folder, or import the repo (no build command, publish directory `/`).
+**GitHub Pages:** https://abhishekpatil200107.github.io/Week2-Assignments/.
 
 ## Project structure
 ```
