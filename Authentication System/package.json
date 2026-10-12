@@ -1,0 +1,12 @@
+{
+  "name": "auth-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure registration, login and session management. Run npm install and npm start from this folder; the code lives in backend/ and frontend/.",
+  "scripts": {
+    "postinstall": "npm install --prefix backend",
+    "start": "npm start --prefix backend",
+    "test": "npm test --prefix backend"
+  },
+  "engines": { "node": ">=22.13.0" }
+}
